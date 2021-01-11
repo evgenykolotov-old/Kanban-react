@@ -1,0 +1,48 @@
+{
+  "name": "kanban",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "vk-miniapps-deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "cross-env": "^5.2.1",
+    "react-hot-loader": "^4.12.19",
+    "react-scripts": "^3.4.0"
+  },
+  "dependencies": {
+    "@vkontakte/icons": "^1.16.3",
+    "@vkontakte/vk-bridge": "^2.3.0",
+    "@vkontakte/vk-connect": "^1.9.0",
+    "@vkontakte/vkui": "^3.2.0",
+    "babel-eslint": "^10.0.3",
+    "chalk": "^2.4.2",
+    "core-js": "^3.6.4",
+    "firebase": "7.9.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router5": "^8.0.0",
+    "router5": "^8.0.0",
+    "router5-plugin-browser": "^8.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
