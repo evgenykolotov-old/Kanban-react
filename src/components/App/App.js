@@ -1,22 +1,24 @@
 import React, { useEffect } from 'react';
 import { View, Panel } from '@vkontakte/vkui';
 import { useRoute } from 'react-router5';
-
+import { useSelector, useDispatch } from 'react-redux';
 import Desks from "../../panels/Desks/Desks";
 import Columns from "../../panels/Columns/Columns";
 import { pages } from "../../router";
-import { useAppState } from "./hooks";
+import { changeRoute } from '../../actions/actions';
 
 const App = () => {
-  const { activePanel, popout, changeRoute } = useAppState();
+  const dispatch = useDispatch();
+  const activePanel = useSelector(state => state.activePanel);
+  const popout = useSelector(state => state.popout);
   const { router, route } = useRoute();
 
   useEffect(() => {
-    router.subscribe(changeRoute);
+    router.subscribe((...args) => dispatch(changeRoute(...args)));
 
-    changeRoute({ route });
+    dispatch(changeRoute({ route }));
     // eslint-disable-next-line
-  }, []);
+  }, [dispatch]);
 
   if (!activePanel) {
 

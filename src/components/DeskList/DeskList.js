@@ -1,11 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useEffect } from 'react';
 import { CardGrid } from "@vkontakte/vkui";
-
+import { useSelector, useDispatch } from 'react-redux';
 import DeskItem from "../DeskItem/DeskItem";
-import Context from "../App/context";
+import { fetchDesks } from '../../actions/actions';
 
 const DeskList = () => {
-  const { desks } = useContext(Context);
+  const dispatch = useDispatch();
+  const desks = useSelector(state => state.desks);
+
+  useEffect(() => {
+    dispatch(fetchDesks());
+    // eslint-disable-next-line
+  }, [dispatch]);
 
   if (!desks.length) {
     return null;

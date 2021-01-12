@@ -1,29 +1,25 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Div, Card, Header, Button, ActionSheet, ActionSheetItem, usePlatform, IOS } from '@vkontakte/vkui';
 import Icon24MoreHorizontal from '@vkontakte/icons/dist/24/more_horizontal';
+import { useDispatch } from 'react-redux';
 import Cards from '../Cards/Cards';
-import { deleteColumn } from '../../actions';
-import Context from '../../components/App/context';
+import { deleteColumn, setPopout } from '../../actions/actions';
 import './Column.css';
 
 const Column = ({ name, id }) => {
-  const { removeColumn, setPopout } = useContext(Context);
+  const dispatch = useDispatch();
   const osname = usePlatform();
 
-  const deleteItem = () => {
-    return deleteColumn(id)
-      .then(() => removeColumn(id))
-      .catch(console.error);
-  };
+  const deleteItem = () => dispatch(deleteColumn(id));
 
   const showColumnOptions = () => {
-    setPopout((
-      <ActionSheet onClose={() => setPopout(null)}>
+    dispatch(setPopout((
+      <ActionSheet onClose={() => dispatch(setPopout(null))}>
         <ActionSheetItem autoclose mode="destructive" onClick={deleteItem}>Удалить</ActionSheetItem>
         {osname === IOS && <ActionSheetItem autoclose mode="cancel">Отменить</ActionSheetItem>}
       </ActionSheet>
-    ))
+    )))
   };
 
   return (
