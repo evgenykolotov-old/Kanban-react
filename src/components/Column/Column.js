@@ -4,7 +4,7 @@ import { Div, Card, Header, Button, ActionSheet, ActionSheetItem, usePlatform, I
 import Icon24MoreHorizontal from '@vkontakte/icons/dist/24/more_horizontal';
 import { useDispatch } from 'react-redux';
 import Cards from '../Cards/Cards';
-import { deleteColumn, setPopout } from '../../actions/actions';
+import { deleteColumn, setPopout } from '../../actions';
 import './Column.css';
 
 const Column = ({ name, id }) => {

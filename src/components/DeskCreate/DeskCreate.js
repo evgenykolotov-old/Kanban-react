@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import CreateFrom from '../CreateForm/CreateForm';
-import { createDesk } from '../../actions/actions';
+import { createDesk } from '../../actions';
 
 const DeskCreate = () => {
   const dispatch = useDispatch();

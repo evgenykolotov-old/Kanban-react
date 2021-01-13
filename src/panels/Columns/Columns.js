@@ -4,13 +4,14 @@ import { useRoute } from 'react-router5';
 import { useSelector, useDispatch } from 'react-redux';
 import Column from '../../components/Column/Column';
 import ColumnCreate from '../../components/ColumnCreate/ColumnCreate';
-import { fetchColumns } from '../../actions/actions';
+import { fetchColumns } from '../../actions';
+import { getDesks, getColumns } from '../../selectors';
 import './Columns.css';
 
 const Columns = () => {
   const dispatch = useDispatch();
-  const columns = useSelector(state => state.columns);
-  const desks = useSelector(state => state.desks);
+  const columns = useSelector(getColumns);
+  const desks = useSelector(getDesks);
   const { route: { params: { deskId } } } = useRoute();
   const desk = desks.find(({ id }) => id === deskId) || {};
   const goToDesks = () => window.history.back();

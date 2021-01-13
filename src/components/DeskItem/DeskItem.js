@@ -5,7 +5,7 @@ import { Card, Div, Button } from "@vkontakte/vkui";
 import { useDispatch } from 'react-redux';
 import './DeskItem.css';
 import { pages } from "../../router";
-import { deleteDesk } from '../../actions/actions';
+import { deleteDesk } from '../../actions';
 
 const DeskItem = ({ id, children }) => {
   const router = useRouter();

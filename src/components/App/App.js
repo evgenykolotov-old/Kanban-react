@@ -5,12 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import Desks from "../../panels/Desks/Desks";
 import Columns from "../../panels/Columns/Columns";
 import { pages } from "../../router";
-import { changeRoute } from '../../actions/actions';
+import { changeRoute } from '../../actions';
+import { getActivePanel, getPopout } from '../../selectors';
 
 const App = () => {
   const dispatch = useDispatch();
-  const activePanel = useSelector(state => state.activePanel);
-  const popout = useSelector(state => state.popout);
+  const activePanel = useSelector(getActivePanel);
+  const popout = useSelector(getPopout);
   const { router, route } = useRoute();
 
   useEffect(() => {

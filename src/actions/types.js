@@ -1,14 +1,14 @@
-export const ADD_COLUMN = 'addColumn';
-export const REMOVE_COLUMN = 'removeColumn';
-export const SET_COLUMNS = 'setColumns';
+export const ADD_COLUMN = 'columns/addColumn';
+export const REMOVE_COLUMN = 'columns/removeColumn';
+export const SET_COLUMNS = 'columns/setColumns';
 
-export const ADD_DESK = 'addDesk';
-export const REMOVE_DESK = 'removeDesk';
-export const SET_DESKS = 'setDesks';
+export const ADD_DESK = 'desks/addDesk';
+export const REMOVE_DESK = 'desks/removeDesk';
+export const SET_DESKS = 'desks/setDesks';
 
-export const ADD_CARD = 'addCard';
-export const REMOVE_CARD = 'removeCard';
-export const SET_CARDS = 'setCards';
+export const ADD_CARD = 'cards/addCard';
+export const REMOVE_CARD = 'cards/removeCard';
+export const SET_CARDS = 'cards/setCards';
 
-export const SET_ACTIVE_PANEL = 'setActivePanel';
-export const SET_POPOUT = 'setPopout';
+export const SET_ACTIVE_PANEL = 'app/setActivePanel';
+export const SET_POPOUT = 'app/setPopout';
