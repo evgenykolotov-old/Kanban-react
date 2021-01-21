@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import CardCreateFrom from './CardCreateFrom';
+import CardCreateForm from './CardCreateForm';
 import { createCard } from '../../actions';
 
 const CardCreate = ({ columnId }) => {
   const dispatch = useDispatch();
+  const createItem = useCallback((name) => dispatch(createCard(name, columnId)), [dispatch, columnId]);
 
-  const createItem = (name) => {
-    dispatch(createCard(name, columnId));
-  }
-
-  return <CardCreateFrom onSubmit={createItem} />;
+  return <CardCreateForm onSubmit={createItem} />;
 };
 
 CardCreate.propTypes = {
   columnId: PropTypes.string.isRequired,
-}
+};
 
-export default CardCreate;
+export default React.memo(CardCreate);

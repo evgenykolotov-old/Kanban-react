@@ -4,11 +4,13 @@ import browserPlugin from 'router5-plugin-browser';
 export const pages = {
   DESKS: 'desks',
   COLUMNS: 'columns',
+  CARD: 'card',
 };
 
-const routes = [
+export const routes = [
   { name: pages.DESKS, path: '/' },
-  { name: pages.COLUMNS, path: '/desk/:deskId' }
+  { name: pages.COLUMNS, path: '/desk/:deskId' },
+  { name: pages.CARD, path: './card/:cardId' },
 ];
 
 export const initialize = () => {

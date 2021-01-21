@@ -8,6 +8,13 @@ import * as backend from './api';
 import * as router from "./router";
 import App from './app/components/App/AppContainer';
 
+if (process.env.NODE_ENV === 'development') {
+  const whyDidYouRender = require('@welldone-software/why-did-you-render');
+  whyDidYouRender(React, {
+    trackAllPureComponents: true,
+  });
+}
+
 const store = getStore();
 const route = router.initialize();
 backend.initialize();

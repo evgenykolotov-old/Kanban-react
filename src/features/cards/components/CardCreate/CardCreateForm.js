@@ -57,4 +57,4 @@ CardCreateForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default CardCreateForm;
+export default React.memo(CardCreateForm);

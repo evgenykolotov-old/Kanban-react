@@ -12,4 +12,4 @@ const Desks = () => (
   </>
 );
 
-export default Desks;
+export default React.memo(Desks);

@@ -1,4 +1,4 @@
-import * as actionTypes from './types';
+import * as actionType from './types';
 
 const initialState = {
   activePanel: null,
@@ -7,18 +7,19 @@ const initialState = {
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case actionTypes.SET_ACTIVE_PANEL: {
+    case actionType.SET_ACTIVE_PANEL: {
       const { panel } = payload;
       return { ...state, activePanel: panel };
     }
 
-    case actionTypes.SET_POPOUT: {
+    case actionType.SET_POPOUT: {
       const { popout } = payload;
       return { ...state, popout };
     }
 
-    default:
+    default: {
       return state;
+    }
   }
 };
 

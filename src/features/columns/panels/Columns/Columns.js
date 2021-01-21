@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { PanelHeaderSimple, Gallery, PanelHeaderBack } from '@vkontakte/vkui';
 import { useRoute } from 'react-router5';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,6 +8,7 @@ import ColumnCreate from '../../components/ColumnCreate/ColumnCreate';
 import { fetchColumns } from '../../actions';
 import { getColumns } from '../../selectors';
 import { getDesks } from '../../../desks/selectors';
+import { goBack } from '../../../../app/actions';
 import './Columns.css';
 
 const Columns = () => {
@@ -16,7 +17,7 @@ const Columns = () => {
   const desks = useSelector(getDesks);
   const { route: { params: { deskId } } } = useRoute();
   const desk = desks.find(({ id }) => id === deskId) || {};
-  const goToDesks = () => window.history.back();
+  const goToDesks = useCallback(() => dispatch(goBack()), [dispatch]);
 
   useEffect(() => {
     dispatch(fetchColumns(deskId));
@@ -25,7 +26,9 @@ const Columns = () => {
 
   return (
     <>
-      <PanelHeaderSimple left={<PanelHeaderBack onClick={goToDesks} />}>Доска {desk.name ? `«${desk.name}»` : ''}</PanelHeaderSimple>
+      <PanelHeaderSimple left={<PanelHeaderBack onClick={goToDesks} />}>
+        Доска {desk.name ? `«${desk.name}»` : ''}
+      </PanelHeaderSimple>
 
       <Gallery
         className="Columns__list"
@@ -40,4 +43,4 @@ const Columns = () => {
   )
 };
 
-export default Columns;
+export default React.memo(Columns);

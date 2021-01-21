@@ -24,8 +24,20 @@ const reducer = (state = initialState, { type, payload }) => {
       return { ...state, list: columns };
     }
 
-    default:
+    case actionTypes.REPLACE_COLUMN: {
+      const { id, name } = payload;
+      const columns = state.list.map(column => {
+        if (column.id !== id) {
+          return column;
+        }
+        return { ...column, name };
+      })
+      return { ...state, list: columns };
+    }
+
+    default: {
       return state;
+    }
   }
 };
 

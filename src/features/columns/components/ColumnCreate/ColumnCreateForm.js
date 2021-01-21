@@ -53,4 +53,4 @@ ColumnCreateForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default ColumnCreateForm;
+export default React.memo(ColumnCreateForm);

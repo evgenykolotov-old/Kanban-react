@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { CardGrid, Div } from '@vkontakte/vkui';
-import { useSelector, useDispatch } from 'react-redux';
-import ColumnCard from '../../../columns/components/ColumnCard/ColumnCard';
+import { useDispatch, useSelector } from "react-redux";
+import { CardGrid, Div } from "@vkontakte/vkui";
+
+import './Cards.css';
+import ColumnCard from '../ColumnCard/ColumnCard';
 import CardCreate from '../CardCreate/CardCreate';
 import { fetchCards } from '../../actions';
 import { getCards } from '../../selectors';
-import './Cards.css';
 
 const Cards = ({ columnId }) => {
   const dispatch = useDispatch();
@@ -34,4 +35,4 @@ Cards.propTypes = {
   columnId: PropTypes.string.isRequired,
 }
 
-export default Cards;
+export default React.memo(Cards);

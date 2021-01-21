@@ -24,8 +24,9 @@ const reducer = (state = initialState, { type, payload }) => {
       return { ...state, list: cards };
     }
 
-    default:
+    default: {
       return state;
+    }
   }
 };
 

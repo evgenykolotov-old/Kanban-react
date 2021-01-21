@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
-import { View, Panel } from '@vkontakte/vkui';
+import React, { useEffect, Suspense } from 'react';
+import { View, Panel, PanelSpinner } from '@vkontakte/vkui';
 import { useRoute } from 'react-router5';
 import { useSelector, useDispatch } from 'react-redux';
-
-import Desks from '../../../features/desks/panels/Desks/Desks';
-import Columns from '../../../features/columns/panels/Columns/Columns';
 
 import { pages } from '../../../router';
 import { changeRoute } from '../../actions';
 import { getActivePanel, getPopout } from '../../selectors';
+
+const Desks = React.lazy(() => import('../../../features/desks/panels/Desks/Desks'));
+const Columns = React.lazy(() => import('../../../features/columns/panels/Columns/Columns'));
+const Card = React.lazy(() => import('../../../features/card/panels/Card/Card'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -29,15 +30,25 @@ const App = () => {
     <>
       <View activePanel={activePanel} header={false} popout={popout}>
         <Panel id={pages.DESKS} separator={false}>
-          <Desks />
+          <Suspense fallback={<PanelSpinner />}>
+            <Desks />
+          </Suspense>
         </Panel>
 
         <Panel id={pages.COLUMNS} separator={false} className="Columns">
-          <Columns />
+          <Suspense fallback={<PanelSpinner />}>
+            <Columns />
+          </Suspense>
+        </Panel>
+
+        <Panel id={pages.CARD} separator={false}>
+          <Suspense fallback={<PanelSpinner />}>
+            <Card />
+          </Suspense>
         </Panel>
       </View>
     </>
 	);
 };
 
-export default App;
+export default React.memo(App);

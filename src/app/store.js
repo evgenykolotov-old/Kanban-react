@@ -6,9 +6,10 @@ import app from './reducer';
 import desks from '../features/desks/reducer';
 import columns from '../features/columns/reducer';
 import cards from '../features/cards/reducer';
+import card from '../features/card/reducer';
 
 export const reducer = combineReducers({
-  app, desks, columns, cards
+  app, desks, columns, cards, card,
 });
 
 export const getStore = () => {

@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, FormLayout, Input } from '@vkontakte/vkui';
+import { Button, Card, FormLayout, Input } from "@vkontakte/vkui";
 import Icon24Add from '@vkontakte/icons/dist/24/add';
-import { useCreateForm } from './hooks';
 
-const CreateFrom = ({ onSubmit, placeholder, actionTitle }) => {
-  const { name, status, reset, submit, setFormMode,
-    isButtonMode, onChangeInput } = useCreateForm({ onSubmit });
+import { modes, useCreateForm } from "./hooks";
+
+const CreateForm = ({ onCancel, initialMode, initialValue, onSubmit, placeholder, actionTitle }) => {
+  const {
+    name,
+    status,
+    reset,
+    submit,
+    setFormMode,
+    onChangeInput,
+    isButtonMode,
+  } = useCreateForm({ initialMode, initialValue, onSubmit, onCancel });
 
   if (isButtonMode) {
     return (
@@ -18,7 +26,7 @@ const CreateFrom = ({ onSubmit, placeholder, actionTitle }) => {
       >
         {actionTitle}
       </Button>
-    )
+    );
   }
 
   return (
@@ -30,7 +38,8 @@ const CreateFrom = ({ onSubmit, placeholder, actionTitle }) => {
           onChange={onChangeInput}
           status={status}
           placeholder={placeholder}
-          />
+        />
+
         <div>
           <Button onClick={submit}>{actionTitle}</Button>
           <Button onClick={reset} mode="tertiary">Отменить</Button>
@@ -40,10 +49,19 @@ const CreateFrom = ({ onSubmit, placeholder, actionTitle }) => {
   );
 };
 
-CreateFrom.propTypes = {
+CreateForm.defaultProps = {
+  initialValue: '',
+  initialMode: modes.button,
+  onCancel: null,
+};
+
+CreateForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   actionTitle: PropTypes.string.isRequired,
-}
+  onCancel: PropTypes.func,
+  initialValue: PropTypes.string,
+  initialMode: PropTypes.string,
+};
 
-export default CreateFrom;
+export default React.memo(CreateForm);

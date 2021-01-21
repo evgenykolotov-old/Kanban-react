@@ -26,4 +26,4 @@ const DeskList = () => {
   );
 };
 
-export default DeskList;
+export default React.memo(DeskList);

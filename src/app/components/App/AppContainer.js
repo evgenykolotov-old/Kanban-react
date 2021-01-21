@@ -16,4 +16,4 @@ const AppContainer = ({ router, store }) => (
   </RouterProvider>
 );
 
-export default AppContainer;
+export default React.memo(AppContainer);
